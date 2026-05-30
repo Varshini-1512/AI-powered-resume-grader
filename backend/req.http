@@ -1,0 +1,51 @@
+### CHECK SERVER
+GET http://localhost:5000
+
+###
+
+### REGISTER USER
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "Varshini",
+  "email": "varshini@test.com",
+  "password": "123456"
+}
+
+###
+
+### LOGIN USER
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "varshini@test.com",
+  "password": "123456"
+}
+
+###
+
+### GET MY RESUMES
+GET http://localhost:5000/api/resume/my-resumes
+Authorization: Bearer YOUR_TOKEN_HERE
+
+###
+
+### GET RESUME BY ID
+GET http://localhost:5000/api/resume/RESUME_ID_HERE
+Authorization: Bearer YOUR_TOKEN_HERE
+
+###
+
+### UPLOAD RESUME
+POST http://localhost:5000/api/resume/upload
+Authorization: Bearer YOUR_TOKEN_HERE
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="resume"; filename="resume.pdf"
+Content-Type: application/pdf
+
+< ./resume.pdf
+--boundary--

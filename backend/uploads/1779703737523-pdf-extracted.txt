@@ -1,0 +1,14 @@
+Gatla Varshini
+gatlavarshini9@gamil.com | LinkedIn | LeetCode | GitHub | +91 8106729418
+TECHNICAL SUMMARY
+Enthusiastic Computer Science graduate with a strong foundation in programming and software development,
+seeking an opportunity to enhance my skills and contribute to innovative projects in a growth-oriented
+organization.
+SKILLS
+Programming: Java, Python, C, C++
+Web Development: HTML5, CSS3, JavaScript, DOM
+Core Concepts: Data Structures & Algorithms, OOP, DBMS
+Databases: MySQL, MongoDB
+Tools: Git, GitHub, VS Code
+
+-- 1 of 1 --
