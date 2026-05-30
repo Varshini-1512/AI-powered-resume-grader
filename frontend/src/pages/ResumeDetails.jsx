@@ -604,7 +604,7 @@ const buildDownloadPdf = async (
     });
     headerY = text(
       checklist.find((item) => item.label === "Job Title")?.value ||
-        "ATS-friendly resume",
+      "ATS-friendly resume",
       margin,
       headerY + 8,
       {
@@ -709,8 +709,8 @@ const buildDownloadPdf = async (
         size: 10,
         style:
           !isBullet &&
-          cleanLine.length < 85 &&
-          /project|certificate|internship|degree|bachelor|intermediate|school|training|application|assistant|calculator/i.test(cleanLine)
+            cleanLine.length < 85 &&
+            /project|certificate|internship|degree|bachelor|intermediate|school|training|application|assistant|calculator/i.test(cleanLine)
             ? "bold"
             : "normal",
         leading: 13,
@@ -726,7 +726,7 @@ const buildDownloadPdf = async (
   });
   drawText(
     checklist.find((item) => item.label === "Job Title")?.value ||
-      "ATS-friendly resume",
+    "ATS-friendly resume",
     {
       size: 12,
       style: "bold",
@@ -755,7 +755,7 @@ const buildDownloadPdf = async (
     "Skills",
     enhancedResume.skills,
     checklist.find((item) => item.label === "Hard Skills")?.value ||
-      "Add technical skills from the uploaded resume."
+    "Add technical skills from the uploaded resume."
   );
   drawSection(
     "Key Achievements",
@@ -1009,13 +1009,13 @@ function ResumeDetails() {
   );
   const fileType = inferFileType(resume);
   const streamedOriginalUrl =
-    `http://localhost:5000/api/resume/file/${resume._id}`;
+    `https://ai-powered-resume-grader-hmyz.onrender.com/api/resume/file/${resume._id}`;
   const originalPreviewUrl =
     fileType === "image"
       ? resume.previewUrl ||
-        resume.cloudinaryUrl ||
-        resume.resumeUrl ||
-        streamedOriginalUrl
+      resume.cloudinaryUrl ||
+      resume.resumeUrl ||
+      streamedOriginalUrl
       : streamedOriginalUrl;
   const originalDownloadUrl =
     resume.downloadUrl ||
@@ -1190,11 +1190,10 @@ function ResumeDetails() {
                       key={item.name}
                       type="button"
                       onClick={() => setSelectedCategory(item.name)}
-                      className={`w-full p-5 text-left transition ${
-                        activeCategoryName === item.name
+                      className={`w-full p-5 text-left transition ${activeCategoryName === item.name
                           ? "bg-slate-100"
                           : "hover:bg-slate-50"
-                      }`}
+                        }`}
                     >
                       <div className="flex items-center justify-between gap-4">
                         <div>
@@ -1236,9 +1235,8 @@ function ResumeDetails() {
                       className="flex items-start gap-3 p-4"
                     >
                       <span
-                        className={`mt-1 text-base font-black ${
-                          item.value ? "text-emerald-600" : "text-rose-500"
-                        }`}
+                        className={`mt-1 text-base font-black ${item.value ? "text-emerald-600" : "text-rose-500"
+                          }`}
                       >
                         {item.value ? "✓" : "✗"}
                       </span>
@@ -1366,18 +1364,18 @@ function ResumeDetails() {
                   {(selectedCategoryStats?.suggestions?.length
                     ? selectedCategoryStats.suggestions
                     : []).map((item, index) => (
-                    <div
-                      key={`${selectedCategoryStats?.name}-${index}`}
-                      className="rounded-xl border border-slate-200 bg-slate-50 p-4"
-                    >
-                      <p className="text-xs font-bold uppercase tracking-wide text-slate-500">
-                        Suggestion {index + 1}
-                      </p>
-                      <p className="mt-2 text-sm leading-6 text-slate-700">
-                        {item}
-                      </p>
-                    </div>
-                  ))}
+                      <div
+                        key={`${selectedCategoryStats?.name}-${index}`}
+                        className="rounded-xl border border-slate-200 bg-slate-50 p-4"
+                      >
+                        <p className="text-xs font-bold uppercase tracking-wide text-slate-500">
+                          Suggestion {index + 1}
+                        </p>
+                        <p className="mt-2 text-sm leading-6 text-slate-700">
+                          {item}
+                        </p>
+                      </div>
+                    ))}
                   {!selectedCategoryStats?.suggestions?.length ? (
                     <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
                       <p className="text-sm font-bold text-slate-950">
@@ -1392,188 +1390,186 @@ function ResumeDetails() {
               </section>
 
               <section className="rounded-2xl border border-slate-200 bg-white shadow-sm">
-              <div className="flex flex-col gap-4 border-b border-slate-200 bg-slate-50 p-5 lg:flex-row lg:items-center lg:justify-between">
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl">PDF</span>
-                  <h2 className="text-2xl font-bold text-slate-800">
-                    Your Resume
-                  </h2>
-                </div>
-
-                <div className="inline-flex rounded-xl bg-slate-200 p-1">
-                  <button
-                    onClick={() => setActiveTab("original")}
-                    className={`min-w-28 px-4 py-2 rounded-lg text-sm font-bold transition ${
-                      activeTab === "original"
-                        ? "bg-white text-emerald-600 shadow-sm"
-                        : "text-slate-600 hover:text-slate-950"
-                    }`}
-                  >
-                    Original
-                  </button>
-                  <button
-                    onClick={() => setActiveTab("enhanced")}
-                    className={`min-w-28 px-4 py-2 rounded-lg text-sm font-bold transition ${
-                      activeTab === "enhanced"
-                        ? "bg-white text-emerald-600 shadow-sm"
-                        : "text-slate-600 hover:text-slate-950"
-                    }`}
-                  >
-                    Enhanced
-                  </button>
-                </div>
-              </div>
-
-              <div className="bg-slate-100 p-4 lg:p-7">
-                {activeTab === "original" ? (
-                  <div className="min-h-[760px] overflow-hidden bg-white shadow-sm">
-                    <OriginalResumePreview
-                      fileType={fileType}
-                      previewUrl={originalPreviewUrl}
-                      downloadUrl={originalDownloadUrl}
-                    />
+                <div className="flex flex-col gap-4 border-b border-slate-200 bg-slate-50 p-5 lg:flex-row lg:items-center lg:justify-between">
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">PDF</span>
+                    <h2 className="text-2xl font-bold text-slate-800">
+                      Your Resume
+                    </h2>
                   </div>
-                ) : (
-                  <article
-                    ref={enhancedResumeRef}
-                    data-enhanced-resume="true"
-                    className="min-h-[820px] bg-white p-8 shadow-sm lg:p-12"
-                  >
-                    <header className="flex items-start justify-between gap-6">
-                      <div>
-                        <h3 className="text-4xl font-black uppercase text-slate-950">
-                          {enhancedResume.name}
-                        </h3>
-                        <p className="mt-2 text-lg font-bold text-sky-600">
-                          {checklist.find((item) => item.label === "Job Title")?.value ||
-                            "ATS-friendly resume"}
-                        </p>
-                        <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-semibold text-slate-600">
-                          {enhancedResume.contactItems?.length ? (
-                            enhancedResume.contactItems.map((item, index) => (
-                              <span
-                                key={`${item.label}-${index}`}
-                                className="inline-flex items-center gap-2"
-                              >
-                                {index > 0 ? (
-                                  <span className="text-slate-400">|</span>
-                                ) : null}
-                                <a
-                                  href={item.href}
-                                  target={item.href.startsWith("http") ? "_blank" : undefined}
-                                  rel={item.href.startsWith("http") ? "noreferrer" : undefined}
-                                  className="text-slate-700 hover:text-sky-600 hover:underline"
+
+                  <div className="inline-flex rounded-xl bg-slate-200 p-1">
+                    <button
+                      onClick={() => setActiveTab("original")}
+                      className={`min-w-28 px-4 py-2 rounded-lg text-sm font-bold transition ${activeTab === "original"
+                          ? "bg-white text-emerald-600 shadow-sm"
+                          : "text-slate-600 hover:text-slate-950"
+                        }`}
+                    >
+                      Original
+                    </button>
+                    <button
+                      onClick={() => setActiveTab("enhanced")}
+                      className={`min-w-28 px-4 py-2 rounded-lg text-sm font-bold transition ${activeTab === "enhanced"
+                          ? "bg-white text-emerald-600 shadow-sm"
+                          : "text-slate-600 hover:text-slate-950"
+                        }`}
+                    >
+                      Enhanced
+                    </button>
+                  </div>
+                </div>
+
+                <div className="bg-slate-100 p-4 lg:p-7">
+                  {activeTab === "original" ? (
+                    <div className="min-h-[760px] overflow-hidden bg-white shadow-sm">
+                      <OriginalResumePreview
+                        fileType={fileType}
+                        previewUrl={originalPreviewUrl}
+                        downloadUrl={originalDownloadUrl}
+                      />
+                    </div>
+                  ) : (
+                    <article
+                      ref={enhancedResumeRef}
+                      data-enhanced-resume="true"
+                      className="min-h-[820px] bg-white p-8 shadow-sm lg:p-12"
+                    >
+                      <header className="flex items-start justify-between gap-6">
+                        <div>
+                          <h3 className="text-4xl font-black uppercase text-slate-950">
+                            {enhancedResume.name}
+                          </h3>
+                          <p className="mt-2 text-lg font-bold text-sky-600">
+                            {checklist.find((item) => item.label === "Job Title")?.value ||
+                              "ATS-friendly resume"}
+                          </p>
+                          <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-semibold text-slate-600">
+                            {enhancedResume.contactItems?.length ? (
+                              enhancedResume.contactItems.map((item, index) => (
+                                <span
+                                  key={`${item.label}-${index}`}
+                                  className="inline-flex items-center gap-2"
                                 >
-                                  {item.label}
-                                </a>
-                              </span>
-                            ))
-                          ) : (
-                            <span>{enhancedResume.contact}</span>
-                          )}
+                                  {index > 0 ? (
+                                    <span className="text-slate-400">|</span>
+                                  ) : null}
+                                  <a
+                                    href={item.href}
+                                    target={item.href.startsWith("http") ? "_blank" : undefined}
+                                    rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+                                    className="text-slate-700 hover:text-sky-600 hover:underline"
+                                  >
+                                    {item.label}
+                                  </a>
+                                </span>
+                              ))
+                            ) : (
+                              <span>{enhancedResume.contact}</span>
+                            )}
+                          </div>
+                        </div>
+
+                        <div className="grid size-28 shrink-0 place-items-center rounded-full bg-sky-500 text-3xl font-bold text-slate-950">
+                          {enhancedResume.initials || "AI"}
+                        </div>
+                      </header>
+
+                      <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)]">
+                        <div className="space-y-8">
+                          <section>
+                            <h4 className="border-b-4 border-slate-950 pb-1 text-lg font-black uppercase">
+                              Summary
+                            </h4>
+                            <p className="mt-3 text-sm leading-6 text-slate-700">
+                              {enhancedResume.summary}
+                            </p>
+                          </section>
+
+                          <section>
+                            <h4 className="border-b-4 border-slate-950 pb-1 text-lg font-black uppercase">
+                              Education
+                            </h4>
+                            <div className="mt-3 space-y-2 text-sm leading-6 text-slate-700">
+                              {renderResumeLines(
+                                enhancedResume.education,
+                                checklist.find((item) => item.label === "Education")?.value ||
+                                "Add education details with institution, degree, and dates."
+                              )}
+                            </div>
+                          </section>
+
+                          <section>
+                            <h4 className="border-b-4 border-slate-950 pb-1 text-lg font-black uppercase">
+                              Certifications
+                            </h4>
+                            <div className="mt-3 space-y-2 text-sm leading-6 text-slate-700">
+                              {renderResumeLines(
+                                enhancedResume.certifications,
+                                "Add certifications from the uploaded resume."
+                              )}
+                            </div>
+                          </section>
+
+                          <section>
+                            <h4 className="border-b-4 border-slate-950 pb-1 text-lg font-black uppercase">
+                              Skills
+                            </h4>
+                            <div className="mt-3 flex flex-wrap gap-2">
+                              {((enhancedResume.skills.length
+                                ? enhancedResume.skills.join(", ")
+                                : checklist.find((item) => item.label === "Hard Skills")?.value) ||
+                                "JavaScript React Node MongoDB Git")
+                                .split(/[,|:]/)
+                                .flatMap((item) => item.split(/\s{2,}/))
+                                .flatMap((item) => item.split(/\s+(?=[A-Z][a-z]+:)/))
+                                .map((skill) => skill.trim())
+                                .map((skill) => skill.replace(/^(programming|web development|core concepts|databases|tools)\s*/i, ""))
+                                .filter(Boolean)
+                                .slice(0, 14)
+                                .map((skill) => (
+                                  <span
+                                    key={skill}
+                                    className="border-b border-slate-400 px-2 py-1 text-xs font-bold text-slate-700"
+                                  >
+                                    {skill}
+                                  </span>
+                                ))}
+                            </div>
+                          </section>
+                        </div>
+
+                        <div className="space-y-8">
+                          <section>
+                            <h4 className="border-b-4 border-slate-950 pb-1 text-lg font-black uppercase">
+                              Key achievements
+                            </h4>
+                            <ul className="mt-3 space-y-3 text-sm leading-6 text-slate-700">
+                              {achievementLines.map((item, index) => (
+                                <li key={index}>
+                                  <span className="font-black text-sky-600">OK</span>{" "}
+                                  {item}
+                                </li>
+                              ))}
+                            </ul>
+                          </section>
+
+                          <section>
+                            <h4 className="border-b-4 border-slate-950 pb-1 text-lg font-black uppercase">
+                              Projects
+                            </h4>
+                            <div className="mt-3 space-y-2 text-sm leading-6 text-slate-700">
+                              {renderResumeLines(
+                                enhancedResume.projects,
+                                "Add project details from the uploaded resume."
+                              )}
+                            </div>
+                          </section>
                         </div>
                       </div>
-
-                      <div className="grid size-28 shrink-0 place-items-center rounded-full bg-sky-500 text-3xl font-bold text-slate-950">
-                        {enhancedResume.initials || "AI"}
-                      </div>
-                    </header>
-
-                    <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)]">
-                      <div className="space-y-8">
-                        <section>
-                          <h4 className="border-b-4 border-slate-950 pb-1 text-lg font-black uppercase">
-                            Summary
-                          </h4>
-                          <p className="mt-3 text-sm leading-6 text-slate-700">
-                            {enhancedResume.summary}
-                          </p>
-                        </section>
-
-                        <section>
-                          <h4 className="border-b-4 border-slate-950 pb-1 text-lg font-black uppercase">
-                            Education
-                          </h4>
-                          <div className="mt-3 space-y-2 text-sm leading-6 text-slate-700">
-                            {renderResumeLines(
-                              enhancedResume.education,
-                              checklist.find((item) => item.label === "Education")?.value ||
-                                "Add education details with institution, degree, and dates."
-                            )}
-                          </div>
-                        </section>
-
-                        <section>
-                          <h4 className="border-b-4 border-slate-950 pb-1 text-lg font-black uppercase">
-                            Certifications
-                          </h4>
-                          <div className="mt-3 space-y-2 text-sm leading-6 text-slate-700">
-                            {renderResumeLines(
-                              enhancedResume.certifications,
-                              "Add certifications from the uploaded resume."
-                            )}
-                          </div>
-                        </section>
-
-                        <section>
-                          <h4 className="border-b-4 border-slate-950 pb-1 text-lg font-black uppercase">
-                            Skills
-                          </h4>
-                          <div className="mt-3 flex flex-wrap gap-2">
-                            {((enhancedResume.skills.length
-                              ? enhancedResume.skills.join(", ")
-                              : checklist.find((item) => item.label === "Hard Skills")?.value) ||
-                              "JavaScript React Node MongoDB Git")
-                              .split(/[,|:]/)
-                              .flatMap((item) => item.split(/\s{2,}/))
-                              .flatMap((item) => item.split(/\s+(?=[A-Z][a-z]+:)/))
-                              .map((skill) => skill.trim())
-                              .map((skill) => skill.replace(/^(programming|web development|core concepts|databases|tools)\s*/i, ""))
-                              .filter(Boolean)
-                              .slice(0, 14)
-                              .map((skill) => (
-                                <span
-                                  key={skill}
-                                  className="border-b border-slate-400 px-2 py-1 text-xs font-bold text-slate-700"
-                                >
-                                  {skill}
-                                </span>
-                              ))}
-                          </div>
-                        </section>
-                      </div>
-
-                      <div className="space-y-8">
-                        <section>
-                          <h4 className="border-b-4 border-slate-950 pb-1 text-lg font-black uppercase">
-                            Key achievements
-                          </h4>
-                          <ul className="mt-3 space-y-3 text-sm leading-6 text-slate-700">
-                            {achievementLines.map((item, index) => (
-                              <li key={index}>
-                                <span className="font-black text-sky-600">OK</span>{" "}
-                                {item}
-                              </li>
-                            ))}
-                          </ul>
-                        </section>
-
-                        <section>
-                          <h4 className="border-b-4 border-slate-950 pb-1 text-lg font-black uppercase">
-                            Projects
-                          </h4>
-                          <div className="mt-3 space-y-2 text-sm leading-6 text-slate-700">
-                            {renderResumeLines(
-                              enhancedResume.projects,
-                              "Add project details from the uploaded resume."
-                            )}
-                          </div>
-                        </section>
-                      </div>
-                    </div>
-                  </article>
-                )}
-              </div>
+                    </article>
+                  )}
+                </div>
               </section>
             </div>
           </div>
